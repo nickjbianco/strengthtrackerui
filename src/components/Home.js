@@ -23,7 +23,7 @@ const Home = (props) => {
   return (
     <div>
       <h1>Home</h1>
-      <h2>Status: {props.loggedInStatus}</h2>
+      <h2>Status: {`${props.loggedIn}`}</h2>
       <button onClick={handleLogoutClick}>Logout</button>
       <Registration handleSuccessfulAuth={handleSuccessfulAuth} />
       <Login handleSuccessfulAuth={handleSuccessfulAuth} />
