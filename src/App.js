@@ -3,6 +3,7 @@ import axios from "axios";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
+import GoalPage from "./components/goals/GoalPage";
 import "./App.css";
 
 const App = (props) => {
@@ -60,6 +61,11 @@ const App = (props) => {
             exact
             path={"/dashboard"}
             render={(props) => <Dashboard {...props} loggedIn={loggedIn} />}
+          />
+          <Route
+            exact
+            path={"/goalpage"}
+            render={(props) => <GoalPage {...props} loggedIn={loggedIn} />}
           />
         </Switch>
       </BrowserRouter>
