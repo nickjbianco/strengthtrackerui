@@ -1,17 +1,19 @@
 import React from "react";
+import Home from "./Home";
+import GoalEnterPage from "./auth/dashboardcomponents/GoalEnterPage";
 
 const Dashboard = (props) => {
   if (props.loggedIn) {
     return (
       <div>
-        <h1>Dashboard</h1>
-        <h2>Stauts: {`${props.loggedIn}`}</h2>
+        <h1>Status: {`${props.loggedIn}`}</h1>
+        <GoalEnterPage />
       </div>
     );
   } else {
     return (
       <div>
-        <h1>Please login to gain view page.</h1>
+        <h1>Please login to acces to site.</h1>
       </div>
     );
   }
