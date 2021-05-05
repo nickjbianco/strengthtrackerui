@@ -1,7 +1,16 @@
-import React from "react";
-import { v4 as uuidv4 } from "uuid";
+import React, { useState } from "react";
+import axios from "axios";
 
-const GoalForm = ({ setStrengthNumbers, strengthNumbers }) => {
+const GoalForm = ({ goals, setGoals }) => {
+  const [strengthNumbers, setStrengthNumbers] = useState({
+    id: "",
+    squat: "",
+    bench: "",
+    deadlift: "",
+    bodyweight: "",
+    date: "",
+  });
+
   const handleStrengthNumbersChange = (e) => {
     e.target.name === "squat" &&
       setStrengthNumbers({ ...strengthNumbers, squat: e.target.value });
@@ -24,12 +33,27 @@ const GoalForm = ({ setStrengthNumbers, strengthNumbers }) => {
   const submitGoal = (e) => {
     e.preventDefault();
 
-    const goalSet =
-      strengthNumbers.squat.trim() ||
-      strengthNumbers.bench.trim() ||
-      strengthNumbers.deadlift.trim();
-
-    goalSet && setStrengthNumbers({ ...strengthNumbers, id: uuidv4() });
+    axios
+      .post(
+        "http://localhost:3001/goals",
+        {
+          goal: {
+            squat: strengthNumbers.squat,
+            bench: strengthNumbers.bench,
+            deadlift: strengthNumbers.deadlift,
+            bodyweight: strengthNumbers.bodyweight,
+            date: strengthNumbers.date,
+          },
+        },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        if (response.data.status === "goal_set") {
+          setStrengthNumbers({ ...response.data.goal });
+          setGoals([...goals, strengthNumbers]);
+        }
+      })
+      .catch((error) => console.log("Goals err: ", error));
 
     setStrengthNumbers({
       id: "",

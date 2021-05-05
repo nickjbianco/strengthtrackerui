@@ -41,6 +41,11 @@ const App = (props) => {
     checkLoginStatus();
   }, []);
 
+  // if (props.loggedIn) {
+  //   return the whole app
+  // } else {
+  //   return the login / registration page
+  // }
   return (
     <div className="App">
       <BrowserRouter>

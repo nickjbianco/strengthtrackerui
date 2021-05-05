@@ -3,24 +3,14 @@ import GoalForm from "./goalcomponents/GoalForm";
 import GoalList from "./goalcomponents/GoalList";
 
 const GoalPage = (props) => {
-  const [strengthNumbers, setStrengthNumbers] = useState({
-    id: "",
-    squat: "",
-    bench: "",
-    deadlift: "",
-    bodyweight: "",
-    date: "",
-  });
+  const [goals, setGoals] = useState([]);
 
   if (props.loggedIn) {
     return (
       <div>
-        <h1>Goal Enter Page</h1>
-        <GoalForm
-          setStrengthNumbers={setStrengthNumbers}
-          strengthNumbers={strengthNumbers}
-        />
-        <GoalList />
+        <h1>Enter Goals Page</h1>
+        <GoalForm goals={goals} setGoals={setGoals} />
+        <GoalList goals={goals} />
       </div>
     );
   } else {
