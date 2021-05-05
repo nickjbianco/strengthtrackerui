@@ -8,13 +8,14 @@ const GoalPage = (props) => {
     squat: "",
     bench: "",
     deadlift: "",
+    bodyweight: "",
+    date: "",
   });
 
   if (props.loggedIn) {
     return (
       <div>
-        <h1>Dashboard</h1>
-        <h2>Goal Enter Page</h2>
+        <h1>Goal Enter Page</h1>
         <GoalForm
           setStrengthNumbers={setStrengthNumbers}
           strengthNumbers={strengthNumbers}

@@ -14,6 +14,11 @@ const GoalForm = ({ setStrengthNumbers, strengthNumbers }) => {
         ...strengthNumbers,
         bodyweight: e.target.value,
       });
+    e.target.name === "date" &&
+      setStrengthNumbers({
+        ...strengthNumbers,
+        date: e.target.value,
+      });
   };
 
   const submitGoal = (e) => {
@@ -68,7 +73,7 @@ const GoalForm = ({ setStrengthNumbers, strengthNumbers }) => {
       />
       <input
         required
-        name="Date"
+        name="date"
         type="date"
         placeholder="Enter Deadline"
         value={strengthNumbers.date}
